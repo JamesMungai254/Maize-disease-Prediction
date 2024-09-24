@@ -3,6 +3,12 @@ from PIL import Image
 import torch
 import torchvision.transforms as transforms
 import torch.nn as nn
+import streamlit as st
+
+
+st.set_page_config(layout="wide")
+
+
 
 
 class SimpleCNN(nn.Module):
@@ -73,8 +79,18 @@ def explain_disease(prediction):
             "symptoms": "Healthy leaf with no visible lesions or spots.",
             "prevention": "Continue with good agricultural practices, such as timely irrigation and use of resistant varieties."
         }
-# Streamlit interface
-st.markdown('# Maize Disease Detection')
+
+
+# Welcome message and introduction about maize diseases
+st.markdown("""
+# Welcome to the Maize Disease Detection Website
+
+#### Maize is a staple food for millions of people worldwide, and it plays a crucial role in global food security. However, maize crops are susceptible to various diseases such as Blight, Common Rust, and Gray Leaf Spot. These diseases can severely impact maize production, leading to significant reductions in yield, quality, and economic value.
+
+#### By using advanced machine learning models, this tool helps in detecting diseases in maize crops early, which can aid in taking timely preventive measures, ensuring food security, and reducing losses for farmers.
+""")
+
+st.markdown('## Maize Disease Detection')
 
 uploaded_file = st.file_uploader("Upload an image of a maize leaf...",  type=["png", "jpg", "jpeg", "bmp", "tiff"])
 
